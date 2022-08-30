@@ -1,18 +1,32 @@
 #include "shell.h"
 
 /**
- * main - main function that accepts input 
+ * main - main function that accepts input
  * @argc: command line argument count
  * @agrv: command line vector count
- * Return:
+ * Return: 0 on success
  */
 
-int main (int argc __attribut__((unused)), char **agrv)
+int main(int argc __attribute__((unused)), char **argv)
 {
-	char *line;
-	(void)argv; signal(SIGINT, ctrl_C);
+	char *prompt = "#shell$ ";
+	char *string = NULL;
+	size_t n = 0;
+	ssize_t line;
+	(void)argv;
+
+	/*signal(SIGINT, ctrl_C);*/
 
 	while (1)
 	{
-		write("#shell$ ", STDOUT_FILENO);
-		line = _getline();
+
+		write(STDOUT_FILENO, prompt, 9);
+		line = getline(&string, &n, stdin);
+
+		write(STDOUT_FILENO, string, line);
+
+		free(string);
+		
+	}
+	return (0);
+}
