@@ -19,7 +19,7 @@ void shell_loop(shell_t *var)
 	{
 		i = 0;
 		non_interractive(var);
-		_printf(" $ ", STDOUT_FILENO));
+		_printf(" $ ", STDOUT_FILENO);
 		line = shell_readline();
 		if (!_strlen(line))
 		{
@@ -70,7 +70,7 @@ void shell_loop(shell_t *var)
  * @p: shell global variable
  */
 
-void non_interractive(shell_t *p)
+void non_interactive(shell_t *p)
 {
 	char **args, **logic_cmd;
 	char *line, *op;
@@ -87,7 +87,7 @@ void non_interractive(shell_t *p)
 			op = logic_cmd[1];
 			while (logic_cmd[0])
 			{
-				execute_logic(logic[0], p);
+				execute_logic(logic_cmd[0], p);
 				p->cmd_counter += 1;
 				if (!logic_cmd[2])
 					break;
@@ -128,10 +128,10 @@ int check_cmd_type(char *command)
 	char *path = NULL;
 	int i = 0;
 
-	while (commamd[i])
+	while (command[i])
 	{
 		if (command[i++] == '/')
-			return(TERM_CMD);
+			return (TERM_CMD);
 	}
 	for (i = 0; internal_cmd[i]; i++)
 	{
