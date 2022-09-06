@@ -1,32 +1,52 @@
 #include "shell.h"
 
 /**
- * main - main function that accepts input
- * @argc: command line argument count
- * @agrv: command line vector count
- * Return: 0 on success
+ * main - main function starts the shell prompt
+ * @argc: argument count which is unused
+ * @argv: character array passed to the main function
+ *
+ * Return: on succes, it returns 1
  */
-
 int main(int argc __attribute__((unused)), char **argv)
 {
-	char *prompt = "#shell$ ";
-	char *string = NULL;
-	size_t n = 0;
-	ssize_t line;
-	(void)argv;
+	shell_t var;
 
-	/*signal(SIGINT, ctrl_C);*/
+	shell_init(&var);
+	var.shell_name = argv[0];
+	var.aliases = NULL;
+	shell_loop(&var);
+	free_tokenized(environ);
 
-	while (1)
+	return (EXIT_SUCCESS);
+}
+
+/**
+ * shell_init - carries out the initialization
+ * @var: shell global variable
+ * Return: shell var
+ */
+shell_t *shell_init(shell_t *var)
+{
+	int i;
+	char **tmp;
+
+	var->shell_name = NULL;
+	var->old_pwd = NULL;
+	var->err_status = 0;
+	var->cmd_counter = 1;
+
+	for (i = 0; environ[i]; i++)
+		;
+	tmp = malloc(sizeof(char *) * (i + 1));
+	var->aliases = malloc(sizeof(char *));
+	var->aliases[0] = NULL;
+
+	for (i = 0; environ[i]; i++)
 	{
-
-		write(STDOUT_FILENO, prompt, 9);
-		line = getline(&string, &n, stdin);
-
-		write(STDOUT_FILENO, string, line);
-
-		free(string);
-		
+		tmp[i] = _strdup(environ[i]);
 	}
-	return (0);
+	tmp[i] = NULL;
+	environ = tmp;
+
+	return (var);
 }
