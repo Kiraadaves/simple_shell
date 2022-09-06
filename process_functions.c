@@ -182,6 +182,12 @@ void shell_execute(char **command, int cmd_type, shell_t *var)
 		shell_launch(command, cmd_type, var);
 	var->err_status = state / 256;
 }
+/**
+ * _strcpy - copies contents of a string to another string
+ * @dest: destination string
+ * @src: string being copied
+ * Return: returns a pointer to the new string
+ */
 
 char *_strcpy(char *dest, char *src)
 {
