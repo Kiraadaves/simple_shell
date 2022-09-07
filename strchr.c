@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strchr - locates a character in a string
+ * _strchr - prints from the first occurrence of a char.
  * @str: source string
  * @c: tested char
  * Return: new string.
@@ -12,6 +12,7 @@ char *_strchr(char *str, char c)
 	{
 		if (*str == c)
 			return (str);
+
 		else
 			str++;
 	}
