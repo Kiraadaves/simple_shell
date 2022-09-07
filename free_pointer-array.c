@@ -1,10 +1,10 @@
 #include "shell.h"
 /**
- * _freearrp - frees completely and array of pointers.
+ * _freeArrPtr - frees completely an array of pointers.
  * @av: array of pointers
  * Return: Always 0.
  */
-void _freearrp(char **av)
+void _freeArrPtr(char **av)
 {
 	int i;
 
