@@ -7,7 +7,7 @@
 void ctrl_C_func(int signum)
 {
 	if (signum == SIGINT)
-		_printf("\n #shell$ ", STDIN_FILENO);
+		_printf("\n#shell$ ", STDIN_FILENO);
 }
 
 /**

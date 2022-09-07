@@ -19,7 +19,7 @@ void shell_loop(shell_t *var)
 	{
 		i = 0;
 		non_interactive(var);
-		_printf(" #shell$ ", STDOUT_FILENO);
+		_printf("#shell$ ", STDOUT_FILENO);
 		line = shell_readline();
 		if (!_strlen(line))
 		{
