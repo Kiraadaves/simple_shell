@@ -18,8 +18,8 @@ void shell_loop(shell_t *var)
 	while (1)
 	{
 		i = 0;
-		non_interractive(var);
-		_printf(" $ ", STDOUT_FILENO);
+		non_interactive(var);
+		_printf(" #shell$ ", STDOUT_FILENO);
 		line = shell_readline();
 		if (!_strlen(line))
 		{

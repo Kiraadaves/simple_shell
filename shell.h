@@ -121,7 +121,7 @@ void (*get_func(char *))(char **, shell_t *);
 /* -------------shell process funtions-------------- */
 
 void shell_loop(shell_t *);
-void non_interractive(shell_t *);
+void non_interactive(shell_t *);
 int check_cmd_type(char *);
 void shell_execute(char **, int, shell_t *);
 char *_strcpy(char *, char *);
