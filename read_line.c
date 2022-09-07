@@ -1,7 +1,8 @@
 #include "shell.h"
 
 #define RED   "\x1B[31m"
-#define GRN   "\x1B[32m"
+#define BLU   "\x1B[34m"
+#define BOLD  "\x1B[1m"
 #define RESET "\x1B[0m"
 
 /**
@@ -18,7 +19,7 @@ char *read_line(char **env, err_t *errval)
 	char *prompt;
 	char nl = '\n';
 
-	prompt = GRN "#Shell" RESET RED "$ " RESET;
+	prompt = BLU BOLD "#Shell" RESET RED BOLD "$ " RESET;
 
 	while (1)
 	{
