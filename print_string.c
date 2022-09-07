@@ -12,7 +12,7 @@ int _putchar(char c)
 
 /**
  * print_string - function that prints stings.
- * @s: pointer to string.
+ * @str: pointer to string.
  * Return: length of string.
  */
 int print_string(char *str)
