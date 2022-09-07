@@ -38,8 +38,6 @@ This repo contains files as regards creating a simple shell. The contributors ar
 - wait4 (man 2 wait4)
 - write (man 2 write)
 
-### More Info
-[sh(1)](https://linux.die.net/man/1/sh "sh(1)")
 
 ### Authors :black_nib:
 
