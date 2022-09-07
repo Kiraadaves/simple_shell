@@ -39,7 +39,7 @@ extern char **environ;
 
 /*generic functions*/
 int _strlen(char *s);
-int print_string(char *s);
+int print_string(char *str);
 char *_strdup(char *str);
 void _freearrp(char **av);
 void *_calloc(unsigned int nmemb, unsigned int size);
