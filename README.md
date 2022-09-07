@@ -1,11 +1,11 @@
-# C Simple Shell
+# C Simple Shell :shell:
 
 This repo contains files as regards creating a simple shell. The contributors are Chinwe Chukwuogor and Abiodun Shittu.
 * The project was compiled with gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 ## When using this shell, the syntax for running any command follows the familiar syntax when running a command in any other shell.
 
-### The following were the only allowed functions, every other function was written from scratch;
+#### The following were the only allowed functions, every other function was written from scratch;
 - access (man 2 access)
 - chdir (man 2 chdir)
 - close (man 2 close)
@@ -37,3 +37,11 @@ This repo contains files as regards creating a simple shell. The contributors ar
 - wait3 (man 2 wait3)
 - wait4 (man 2 wait4)
 - write (man 2 write)
+
+### More Info
+[sh(1)](https://linux.die.net/man/1/sh "sh(1)")
+
+### Authors :black_nib:
+
+* [Chinwe Chukwuogor](https://github.com/Kiraadaves/)
+* [Abiodun Gafar Shittu](https://github.com/Abiodun-Shittu/)
