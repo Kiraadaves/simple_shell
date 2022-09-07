@@ -166,7 +166,7 @@ void shell_execute(char **command, int cmd_type, shell_t *var)
 		{
 			shell_launch(command, cmd_type, var);
 		}
-		else if (PID > 0)
+		else if (PID < 0)
 		{
 			perror("Error Creating fork");
 			return;
