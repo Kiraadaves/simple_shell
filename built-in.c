@@ -8,7 +8,7 @@
  * @errval: error print data
  * Return: 0 always
  */
-int non_match(char **av, char *line, char **env, err_t *errval)
+int non_match(char **av, char *line, char ***env, err_t *errval)
 {
 	(void) av;
 	(void) line;

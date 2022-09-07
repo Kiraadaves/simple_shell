@@ -50,7 +50,7 @@ int setenv_f(char **av, char *line, char ***env, err_t *errval)
 	char *token, *mod_env, *aux;
 	(void) line;
 
-	if (av[1] == NULL || av[2] == NULL || aav[3])
+	if (av[1] == NULL || av[2] == NULL || av[3])
 	{
 		write(STDERR_FILENO, errval->argv_0, _strlen(errval->argv_0));
 		write(STDERR_FILENO, ": ", 2);

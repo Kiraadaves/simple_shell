@@ -38,9 +38,20 @@ char **new_envmod(char **env, int idx)
 int unsetenv_f(char **av, char *line, char ***env, err_t *errval)
 {
 	int verif;
-	(void) line;
+	(void)line;
 
 	if (av[1] == NULL || av[2])
+	{
+		write(STDERR_FILENO, errval->argv_0, _strlen(errval->argv_0));
+		write(STDERR_FILENO, ": ", 2);
+		print_err_numb(errval->e_c);
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, av[0], _strlen(av[0]));
+		write(STDERR_FILENO, ": wrong sintax\n", 15);
+		return (1);
+	}
+	verif = findenv((*env), av[1]);
+	if (verif == -1)
 	{
 		write(STDERR_FILENO, errval->argv_0, _strlen(errval->argv_0));
 		write(STDERR_FILENO, ": ", 2);

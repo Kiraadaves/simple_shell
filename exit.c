@@ -9,7 +9,7 @@ void print_err_exit(err_t *errval, char **av)
 {
 	write(STDERR_FILENO, errval->argv_0, _strlen(errval->argv_0));
 	write(STDERR_FILENO, ": ", 2);
-	print_err_num(errval->e_c);
+	print_err_numb(errval->e_c);
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, av[0], _strlen(av[0]));
 	write(STDERR_FILENO, ": Illegal number: ", 18);
@@ -42,7 +42,7 @@ int _isdigit(int c)
  */
 long int _atoi_mod(char *s)
 {
-	unsigneg long int res = 0, sing = 1, i, si;
+	unsigned long int res = 0, sing = 1, i, si;
 
 	if (_strlen(s) > 10)
 	{
@@ -103,7 +103,7 @@ int exit_f(char **av, char *line, char ***env, err_t *errval)
 		if (sta_n < 0 || sta_n > 2147483647)
 		{
 			print_err_exit(errval, av);
-			err->exit_status = 2;
+			errval->exit_status = 2;
 			return (1);
 		}
 		free(line), _freearrp(av), _freearrp(*env);

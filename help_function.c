@@ -56,7 +56,7 @@ int check_func_sintax(char **av, err_t *errval)
 	else
 	{
 		printerr_help(errval, av, 2);
-		errval->exit_status = 2);
+		errval->exit_status = 2;
 	}
 	printerr_help(errval, av, 3);
 	errval->exit_status = 2;

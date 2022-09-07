@@ -6,13 +6,13 @@
  * Return: returns a character pointer
  */
 
-char *check_path_mod(char *path_val, char 8vect_0)
+char *check_path_mod(char *path_val, char *vect_0)
 {
 	int i, j, len;
 	char *mod_path = NULL;
 	struct stat st;
 
-	if (path_val[0] == ":" && (stat(vect_0, &st) == 0))
+	if (path_val[0] == ':' && (stat(vect_0, &st) == 0))
 	{
 		free(path_val);
 		return (NULL);
