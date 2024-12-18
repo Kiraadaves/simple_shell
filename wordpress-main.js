@@ -593,3 +593,71 @@ jQuery(document).ready(function ($) {
     }
 
 }(jQuery));
+
+
+--------------------------------------------------------
+Pluggin code edit for price range drop down
+
+public function get_price_filter() {
+    if ( ! empty( $this->instance['search_by_price'] ) ) {
+        $filters    = ! empty( $_GET['filters'] ) ? $_GET['filters'] : []; /* phpcs:ignore WordPress.Security.NonceVerification.Recommended */
+        $fMinValue  = ! empty( $filters['price']['min'] ) ? esc_attr( $filters['price']['min'] ) : null;
+        $fMaxValue  = ! empty( $filters['price']['max'] ) ? esc_attr( $filters['price']['max'] ) : null;
+
+        // Define options for the select fields.
+        $price_options = apply_filters( 'rtcl_price_filter_options', [0, 50, 100, 200, 500, 1000, 2000, 5000, 10000] );
+
+        // Generate options for the "min" select field.
+        $min_options_html = '<option value="">' . esc_html__( 'Min', 'classified-listing' ) . '</option>';
+        foreach ( $price_options as $price ) {
+            $selected = ( $fMinValue !== null && (int) $fMinValue === $price ) ? ' selected' : '';
+            $min_options_html .= sprintf(
+                '<option value="%d"%s>%s</option>',
+                esc_attr( $price ),
+                $selected,
+                esc_html( $price )
+            );
+        }
+
+        // Generate options for the "max" select field.
+        $max_options_html = '<option value="">' . esc_html__( 'Max', 'classified-listing' ) . '</option>';
+        foreach ( $price_options as $price ) {
+            $selected = ( $fMaxValue !== null && (int) $fMaxValue === $price ) ? ' selected' : '';
+            $max_options_html .= sprintf(
+                '<option value="%d"%s>%s</option>',
+                esc_attr( $price ),
+                $selected,
+                esc_html( $price )
+            );
+        }
+
+        $field_html = sprintf(
+            '<div class="form-group">
+                <div class="price-container">
+                    <div class="row">
+                        <div class="col-md-6 col-6">
+                            <select name="filters[price][min]" class="form-control">%s</select>
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <select name="filters[price][max]" class="form-control">%s</select>
+                        </div>
+                    </div>
+                </div>
+            </div>',
+            $min_options_html,
+            $max_options_html
+        );
+
+        return sprintf(
+            '<div class="rtcl-price-filter ui-accordion-item is-open">
+                <a class="ui-accordion-title">
+                    <span>%s</span>
+                    <span class="ui-accordion-icon rtcl-icon rtcl-icon-anchor"></span>
+                </a>
+                <div class="ui-accordion-content">%s</div>
+            </div>',
+            apply_filters( 'rtcl_widget_filter_price_title', esc_html__( "Price Range", "classified-listing" ) ),
+            $field_html
+        );
+    }
+}
